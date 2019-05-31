@@ -63,7 +63,7 @@ int count=0;
 */
 
 //Implement the java.util.concurrent.Callable interface
-
+/*
 class WaysToCreateThread implements Callable {
 
     private static final int THREAD_POOL_SIZE = 2;
@@ -79,14 +79,15 @@ class WaysToCreateThread implements Callable {
             ExecutionException {
         // create a pool of 2 threads
         ExecutorService executor = Executors
-                .newFixedThreadPool(THREAD_POOL_SIZE);/*Creates a thread pool that reuses a fixed
-									                 number of threads operating off a shared unbounded queue. At any point, at most
-									                  nThreads threads will be active processing tasks. If additional tasks are submitted
-									                   when all threads are active, they will wait in the queue until a thread is available.
-									                    If any thread terminates due to a failure during execution prior to shutdown, a new one
-									                     will take its place if needed to execute subsequent tasks. The threads in the pool will
-									                      exist until it is explicitly shutdown.
-*/
+                .newFixedThreadPool(THREAD_POOL_SIZE);
+ 												//		Creates a thread pool that reuses a fixed
+												// number of threads operating off a shared unbounded queue. At any point, at most
+												// nThreads threads will be active processing tasks. If additional tasks are submitted
+												//   when all threads are active, they will wait in the queue until a thread is available.
+												//       If any thread terminates due to a failure during execution prior to shutdown, a new one
+												//       will take its place if needed to execute subsequent tasks. The threads in the pool will
+												//  exist until it is explicitly shutdown.
+																			
 
         Future future1 = executor.submit(new WaysToCreateThread());
         Future future2 = executor.submit(new WaysToCreateThread());
@@ -99,5 +100,50 @@ class WaysToCreateThread implements Callable {
         System.out.println(future2.get());
 
     }
-}
+}*/
+
+
+/*
+
+public class WaysToCreateThread
+{
+	static int count=0;
+	public static void main(String []args) {
+		Thread t1= new Thread(new Runnable()
+		{
+		@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				for(int i=0;i<10;i++)
+				{
+					increment();
+					//count++;
+				}
+				
+			}
+		});
+		t1.start();
+		try {
+			t1.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(count);
+	}
+	
+	static void increment() {
+		++count;
+	}
+	
+	}
+*/
+
+//prefer runnable over thread coz
+/*Inherit only if you want to override some behavior.
+
+Or rather it should be read as:
+
+Inherit less, interface more.*/
+
   

@@ -65,6 +65,12 @@ public class ProducerConsumer
 		// Create a list shared by producer and consumer 
 		// Size of list is 2. 
 		LinkedList<Integer> list = new LinkedList<>(); 
+		/*Note that this implementation is not synchronized. If multiple threads access a linked list
+		 *  concurrently, and at least one of the threads modifies the list structurally, it must be synchronized externally.
+		 *   (A structural modification is any operation that adds or deletes one or more elements; merely setting the value of an 
+		 *   element is not a structural modification.) This is typically accomplished by synchronizing on some object that naturally 
+		 *   encapsulates the list. If no such object exists, the list should be "wrapped" using
+		 *  the Collections.synchronizedList method. This is best done at creation time, to prevent accidental */
 		int capacity = 2; 
 
 		// Function called by producer thread 
@@ -78,11 +84,20 @@ public class ProducerConsumer
 				{ 
 					// producer thread waits while list 
 					// is full 
+					 /*An inner loop is there before adding the jobs to list that checks if the job
+						list is full, the producer thread gives up the intrinsic lock on PC and goes
+						on the waiting state.*/
 					while (list.size()==capacity)
-						wait();  /*An inner loop is there before adding the jobs to list that checks if the job
-					 								list is full, the producer thread gives up the intrinsic lock on PC and goes
-					 								on the waiting state.*/
-						
+						wait(); 
+						/*Causes the current thread to wait until another thread invokes the notify() method or
+						 *  the notifyAll() method for this object. In other words, this method behaves exactly as if it 
+						 *  simply performs the call wait(0). The current thread must own this object's monitor. The thread
+						 *   releases ownership of this monitor and waits until another thread notifies threads waiting on this 
+						 *   object's monitor to wake up either through a call to the notify method or the notifyAll method. The thread
+						 *    then waits until it can re-obtain ownership of the monitor and resumes execution. 
+								As in the one argument version, interrupts and spurious wakeups are possible,
+								 and this method should always be used in a loop: 
+*/
 
 					System.out.println("Producer produced-"
 												+ value); 

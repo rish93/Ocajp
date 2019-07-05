@@ -92,11 +92,11 @@ public static void main(String[] args)
 	tree.rootNode.rightChild.rightChild = new LeafNode(4); 
 	
 	System.out.println(
-	"     1"
+	"         1"
 	+"  	/  \"\n"
-	+   "   2    3 \n"
+	+   "  2    3 \n"
 	+   "  / \\   /\\ \n"
-	+"7   6 5  4");
+	+"    7   6 5  4");
 		
 	System.out.println("ZigZag Order traversal of binary tree is"); 
 	tree.printZigZagTraversal(); 

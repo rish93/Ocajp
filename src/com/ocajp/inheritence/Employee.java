@@ -1,5 +1,10 @@
 package com.ocajp.inheritence;
 
+import java.util.List;
+
+import com.ocajp.programs.Employee;
+import com.ocajp.programs.Manager;
+
 /**
  * Which base class members aren’t inherited by a derived class?
 A derived class doesn’t inherit the following members:
@@ -49,3 +54,34 @@ class Programmer extends Employee {
 //		CHILD IS A BASE CLASS RELATION
 //		MANAGER IS A EMPLOYEE
 }
+
+
+/////////////////////////
+
+class Employee
+{
+	Employee emp1= new Manager();
+   int score=12;
+	private String department;
+    private Integer address;
+    protected int education;
+   int scc= emp1.score;//its own
+    //So on...
+}
+class Manager extends Employee {
+    private List<Employee> reportees;
+    int score=10;
+    Manager manager= new Manager();
+    Employee emp= new Employee();
+    Employee emp1= new Manager();
+
+    int  education=manager.education;
+    int s= manager.score;//score of manager
+   
+  int d=  emp.score;
+   int f=   emp1.score;
+    int ss=super.score;
+    
+}
+
+
